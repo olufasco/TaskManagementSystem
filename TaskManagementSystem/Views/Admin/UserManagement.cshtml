@@ -1,0 +1,27 @@
+﻿@model IEnumerable<TaskManagementSystem.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<h2>User Management</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>
+                    <a asp-action="AssignRole" asp-route-userId="@user.Id">Assign Member Role</a> |
+                    <a asp-action="RemoveRole" asp-route-userId="@user.Id">Remove Member Role</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
