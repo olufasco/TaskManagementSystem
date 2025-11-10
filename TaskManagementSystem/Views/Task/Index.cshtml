@@ -1,0 +1,25 @@
+﻿@model List<TaskManagementSystem.Models.TaskItem>
+@{
+    ViewData["Title"] = "My Tasks";
+}
+
+<h2>My Tasks</h2>
+
+<form asp-action="Create" method="post">
+    <input type="text" name="Title" placeholder="Task title" required />
+    <input type="text" name="Description" placeholder="Description" />
+    <button type="submit">Add Task</button>
+</form>
+
+<ul>
+    @foreach (var task in Model)
+    {
+        <li>
+            <strong>@task.Title</strong> - @task.Description
+            <form asp-action="Delete" method="post" style="display:inline">
+                <input type="hidden" name="id" value="@task.Id" />
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    }
+</ul>
